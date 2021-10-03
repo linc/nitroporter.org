@@ -3,3 +3,4 @@ theme: jekyll-theme-minimal
 description: Data portability for communities
 github:
   repository_url: https://github.com/linc/nitro-porter
+  repository_nwo: linc/nitro-porter
