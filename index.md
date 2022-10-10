@@ -20,6 +20,11 @@ Community software has high lock-in due to the difficulty of preserving history 
 Community history is vitally important, and being able to change software is important for the health of the community software ecosystem.
 
 Nitro Porter exists because your community deserves both the best tools available and the continuity of its unique history.
+It uses the GNU Public License 2.0 to ensure it remains freely available to anyone who needs it.
+
+This tool is designed for ease of extensibility to allow anyone with basic programming skills to add a source or target.
+Any generally available forum software (commercial or free) may be added as a source or target.
+It does not include bespoke or custom forum software, but is designed to allow individuals to create such support easily for their private use.
 
 # History
 
@@ -33,4 +38,4 @@ Over a decade, export ("source") support was added for many forum packages, even
 By late 2019, Vanilla had ceased creating packaged open source releases and Vanilla Porter was receiving only minimal updates.
 
 In September 2021, Lincoln forked the GPL2 project as Nitro Porter and rebuilt it into a general-purpose migration pipeline.
-It conitnues to use Vanilla's database schema as an intermediary format to allow backwards compatibility with the source pacakages already created.
+It continues to use Vanilla's database schema as an intermediary format to allow backwards compatibility with the source packages already created.
