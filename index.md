@@ -9,13 +9,17 @@ All data sources & targets support users, user roles, discussions, posts, and ba
 Beyond that, each supports different types of data depending on feature availability, extension choice, and maturity of the source/target package.
 These include things like badges, reactions, bookmarks, and polls.
 
-Both the [source](/sources) and target must support a data type for it to transfer.
+Both the [source](/sources) and [target](/targets) must support a data type for it to transfer.
 
 Nitro Porter never transfers permissions. It's not safe to do so automatically due to variations in how platforms implement them.
 
 # Extending the Porter
 
 Read the [Developer Guide](/develop) to create a new Source or Target for Nitro Porter.
+
+# Planning your migration
+
+Read this brief guide on [planning a forum migration](/migrations).
 
 # Project goals & motivation
 
