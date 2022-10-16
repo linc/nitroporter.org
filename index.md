@@ -1,6 +1,6 @@
 # Overview
 
-Nitro Porter supports over 30 sources (the software you're leaving) and 2 targets (the software you're moving to).
+Nitro Porter supports over 30 sources (the software you're leaving) and 2 targets (the software you're moving to). Read the [User Guide](/guide) to get started.
 
 Currently, all data sources and targets are based on SQL databases (except for the Vanilla target package, which uses a flat file).
 In the future, it will also support API-based migrations.
