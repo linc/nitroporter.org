@@ -1,7 +1,10 @@
+Read the **[User Guide](/guide)** to get started using Nitro Porter or the **[Migration Planning Guide](/migrations)** for community tips. 
+
+There's also a **[Developer Guide](/develop)** to create a new Source or Target for Nitro Porter .
+
 # Overview
 
-Nitro Porter supports over 30 sources (the software you're leaving) and 2 targets (the software you're moving to). Read the [User Guide](/guide) to get started.
-
+Nitro Porter supports over 30 **[sources](/sources)** (the software you're leaving) and 2 **[targets](/targets)** (the software you're moving to). 
 Currently, all data sources and targets are based on SQL databases (except for the Vanilla target package, which uses a flat file).
 In the future, it will also support API-based migrations.
 
@@ -9,17 +12,9 @@ All data sources & targets support users, user roles, discussions, posts, and ba
 Beyond that, each supports different types of data depending on feature availability, extension choice, and maturity of the source/target package.
 These include things like badges, reactions, bookmarks, and polls.
 
-Both the [source](/sources) and [target](/targets) must support a data type for it to transfer.
+Both the source and target must support a data type for it to transfer.
 
 Nitro Porter never transfers permissions. It's not safe to do so automatically due to variations in how platforms implement them.
-
-# Extending the Porter
-
-Read the [Developer Guide](/develop) to create a new Source or Target for Nitro Porter.
-
-# Planning your migration
-
-Read this brief guide on [planning a forum migration](/migrations).
 
 # Project goals & motivation
 
