@@ -2,9 +2,9 @@
 
 Nitro Porter works in this order:
 
-1. The **Source** package translates the data to the intermediary "porter format" (roughly analagous to Vanilla's database schema). These are new database tables with the prefix `PORT_`.
+1. The **Source** package translates the data to the intermediary "porter format" (roughly analogous to Vanilla's database schema). These are new database tables with the prefix `PORT_`.
 2. The **Target** package translates the data to the final platform format. These can be existing tables from an installation, or it will create them new using the information provided.
-3. If a **Postscript** file with the same name as the Target exists, it runs last. This is for doing colcultions that require the data to have been fully transferred already, for example generating data that wasn't ever in the Source.
+3. If a **Postscript** file with the same name as the Target exists, it runs last. This is for doing calculations that require the data to have been fully transferred already, for example generating data that wasn't ever in the Source.
 
 The `ExportModel` is a utility class that gets passed between every step in the process. It's abbreviated as `$ex` throughout the code.
 
