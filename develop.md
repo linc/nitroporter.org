@@ -60,3 +60,7 @@ Nitro Porter use's the [Laravel Illuminate](https://github.com/illuminate/databa
 While Nitro Porter reuses an existing database connection wherever possible, it defaults to using an unbuffered query for speed, and it will often be advisable to use the driver's `cursor()` method to stream the results.
 
 You need a second, separate database connection to do other queries while unbuffered results are streaming. The streaming connection is effectively mid-query. While this rarely comes up in **Source** packages since they are simply dumping information and the **Target** package usually abstracts away much of this work, it can get tricky when complex **Postscript** operations are necessary. Refer to the `Flarum` Postscript for examples.
+
+## Not using MySQL?
+
+If you need to migrate from MSSQL with a `.bak` file (e.g. from AspPlayground) and you're working on an M1 Macbook Pro, [this guide will help](https://lincolnwebs.com/mssql-macos/).
