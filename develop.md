@@ -2,13 +2,37 @@
 
 Nitro Porter works in this order:
 
-1. The **Source** package translates the data to the intermediary "porter format" (roughly analogous to Vanilla's database schema). These are new database tables with the prefix `PORT_`.
+1. The **Source** package translates the data to the intermediary "porter format" (see below). These are new database tables with the prefix `PORT_`.
 2. The **Target** package translates the data to the final platform format. These can be existing tables from an installation, or it will create them new using the information provided.
 3. If a **Postscript** file with the same name as the Target exists, it runs last. This is for doing calculations that require the data to have been fully transferred already, for example generating data that wasn't ever in the Source.
 
 The `ExportModel` is a utility class that gets passed between every step in the process. It's abbreviated as `$ex` throughout the code.
 
 Use its `comment()` method for logging. Open `porter.log` in your favorite log reader for realtime feedback.
+
+## Porter Format
+
+Nitro Porter uses a "porter format" roughly analogous to the database design of Vanilla Forums. 
+That means all sources translate to Vanilla, and all targets translate from Vanilla. 
+Doing this elegant alleviates multiple challenges.
+
+First, imagine 50 sources and 50 targets. Direct migrations would create exponential complexity (50:50 = 2500 possible paths).
+By using a dedicated intermediary, complexity is significantly constrained (50:1 and 1:50, so that only 100 paths are possible).
+
+Second, many forum database designs are difficult to interpret and/or very strict in their data structure. 
+Vanilla's is fairly sensible and serves as a good reference. It was also designed for easy import.
+
+Third, Nitro Porter's origin is as a Vanilla migration tool, so it preserves backwards compatibility for the original sources.
+
+### Considerations regarding Porter Format
+
+One common issue with this Porter Format is that the original post's body is attached directly to the discussion record.
+A majority of forums instead associate a generic post/comment record as the "first", and the discussion record contains only the title. 
+Nitro Porter uses the `getDiscussionBodyMode()` method to skip the overhead of doing this conversion if both the source and target use this alternative structure.
+
+Private messages in Vanilla function as a discussion with an allowlist of participants. 
+There is no consideration of when a user was added to a private message chain. It does not support PM organization in any way.
+
 
 ## Add a new Source
 
@@ -55,12 +79,15 @@ Simply add a new PHP class to the `src/Postscript` folder with the same name as 
 
 ## Working with database connections
 
-Nitro Porter use's the [Laravel Illuminate](https://github.com/illuminate/database) database driver. Refer to its [documentation](https://laravel.com/docs/9.x) for help.
+Nitro Porter uses the [Laravel Illuminate](https://github.com/illuminate/database) database driver. Refer to its [documentation](https://laravel.com/docs/9.x) for help.
 
 While Nitro Porter reuses an existing database connection wherever possible, it defaults to using an unbuffered query for speed, and it will often be advisable to use the driver's `cursor()` method to stream the results.
 
 You need a second, separate database connection to do other queries while unbuffered results are streaming. The streaming connection is effectively mid-query. While this rarely comes up in **Source** packages since they are simply dumping information and the **Target** package usually abstracts away much of this work, it can get tricky when complex **Postscript** operations are necessary. Refer to the `Flarum` Postscript for examples.
 
-## Not using MySQL?
+
+## Non-MySQL help
+
+### MSSQL conversions
 
 If you need to migrate from MSSQL with a `.bak` file (e.g. from AspPlayground) and you're working on an M1 Macbook Pro, [this guide will help](https://lincolnwebs.com/mssql-macos/).
