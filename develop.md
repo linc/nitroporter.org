@@ -13,8 +13,7 @@ Use its `comment()` method for logging. Open `porter.log` in your favorite log r
 ## Porter Format
 
 Nitro Porter uses a "porter format" roughly analogous to the database design of Vanilla Forums. 
-That means all sources translate to Vanilla, and all targets translate from Vanilla. 
-Doing this elegant alleviates multiple challenges.
+That means all sources translate to Vanilla, and all targets translate from Vanilla. Doing this alleviates multiple challenges.
 
 First, imagine 50 sources and 50 targets. Direct migrations would create exponential complexity (50:50 = 2500 possible paths).
 By using a dedicated intermediary, complexity is significantly constrained (50:1 and 1:50, so that only 100 paths are possible).
