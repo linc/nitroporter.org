@@ -65,6 +65,24 @@ Target packages first have their `validate()` method called, then their `run()` 
 
 To confirm an optional data type exists before importing it, use `targetExists()` on the `ExportModel`.
 
+### Verify source support for each feature
+
+It's not safe to assume every `PORT_` table will be present because not all source packages provide all types of feature data.
+
+These tables should always be present: `PORT_User`, `PORT_Discussion`, `PORT_Comment`, and `PORT_Category`.
+
+For all others, check if the table exists. Example:
+
+```php
+        // Verify support.
+        if (!$ex->targetExists('PORT_FeatureName')) {
+            $ex->comment('Skipping import: FeatureName (Source lacks support)');
+            return;
+        }
+```
+
+Generally tables come in bundles. For instance, there's little use for `PORT_Role` if `PORT_UserRole` is not also present. Checking for one is usually sufficient.
+
 ### Using import()
 
 The `import()` method works a bit more cleanly than the `export()` method. It takes a map array, but also accepts a built SQL statement rather than a query string. It requires defining the target database table structure, and separates filters into their own array for clarity. Use `$ex->dbImport()` to build the SQL statement.
