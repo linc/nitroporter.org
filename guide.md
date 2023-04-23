@@ -12,7 +12,7 @@ You need:
 
 Nitro Porter will set PHP's memory limit to 256MB. If it's unable to do so, it may suffer performance issues or generate errors. For small forums, you may be able to safely reconfigure it to 128MB or lower.
 
-A quick way to get all of the above would be installing MAMP or XAMPP on your laptop.
+A quick way to get all of the above would be installing MAMP or XAMPP on your laptop. The longer way, if you're doing this often or have huge datasets, is to follow my [PHP localhost guide for Mac](https://lincolnwebs.com/php-localhost/).
 
 
 ## Installation
