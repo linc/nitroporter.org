@@ -34,26 +34,31 @@ Run `porter list` and then choose whether to list:
 * targets [`t`] — Package names you can migrate to
 * connections [`c`] — What's in your config (did you make one?)
 
-Note the bolded values without spaces or special characters.
+Note the bolded values without spaces or special characters. Those are the `<name>` values you need next.
 
 ### Check support
 
 What can you migrate? Find out!
 
-Run `porter show <source-name> source` and `porter show <target-name> target` to see what feature data is supported by the source and target. Data **must be in both** for it to migrate.
+Run `porter show source <name>` and `porter show target <name>` to see what feature data is supported by the source and target. Data **must be in both** for it to migrate.
 
 ### Run the migration
 
-Use `porter run --help` for a full set of options.
+Use `porter run --help` for a full set of options (including shortcodes).
 
 A very simple run might look like: 
 ```
 porter run --source=<name> --input=<connection> --target=<name>
 ```
 
-Example (that outputs to a different database):
+**Example A**: Export from Vanilla in `example_db` to Flarum in `test_db`:
 ```
 porter run --source=vanilla2 --input=example_db --target=flarum --output=test_db
+```
+
+**Example B**: Export from XenForo in `example_db` to Flarum in the same database, using shortcodes:
+```
+porter run -s xenforo -i example_db -t flarum
 ```
 
 ## Troubleshooting
