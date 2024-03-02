@@ -23,7 +23,40 @@ A quick way to get all of the above would be installing MAMP or XAMPP on your la
 5. See the options with `porter --help`.
 
 
-## Suggestions & Troubleshooting
+## Basic Usage
+
+### Get oriented
+
+Get the "short" names of the packages and connections you want to use.
+
+Run `porter list` and then choose whether to list:
+* sources [`s`] — Package names you can migrate from
+* targets [`t`] — Package names you can migrate to
+* connections [`c`] — What's in your config (did you make one?)
+
+Note the bolded values without spaces or special characters.
+
+### Check support
+
+What can you migrate? Find out!
+
+Run `porter show <source-name> source` and `porter show <target-name> target` to see what feature data is supported by the source and target. Data **must be in both** for it to migrate.
+
+### Run the migration
+
+Use `porter run --help` for a full set of options.
+
+A very simple run might look like: 
+```
+porter run --source=<name> --input=<connection> --target=<name>
+```
+
+Example (that outputs to a different database):
+```
+porter run --source=vanilla2 --input=example_db --target=flarum --output=test_db
+```
+
+## Troubleshooting
 
 ### Follow the logs
 
