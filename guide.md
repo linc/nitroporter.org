@@ -17,11 +17,13 @@ A quick way to get all of the above would be installing MAMP or XAMPP on your la
 ## Installation
 
 1. [Get Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos).
-2. `composer global require "linc/nitro-porter"`.
-3. Copy `config-sample.php` as `config.php`. 
-4. Add connections for your source and output to `config.php`.
-5. See the options with `porter --help`.
-
+1. `composer global require "linc/nitro-porter"`.
+1. `composer global install`.
+1. Go to `linc/nitro-porter` within your Composer directory.
+   1. To do this on MacOS: `cd ~/.composer/linc/nitro-porter`
+1. Copy `config-sample.php` as `config.php`. 
+1. Add connections for your source and output to `config.php`.
+1. See the options with `porter --help`.
 
 ## Basic Usage
 
@@ -41,6 +43,10 @@ Note the bolded values without spaces or special characters. Those are the `<nam
 What can you migrate? Find out!
 
 Run `porter show source <name>` and `porter show target <name>` to see what feature data is supported by the source and target. Data **must be in both** for it to migrate.
+
+### Optional: Install the target software
+
+Nitro Porter tends to work the smoothest when you pre-install the new software so its database tables preexist when running the migration. However, it should also work without doing this, so keep reporting issues in either scenario.
 
 ### Run the migration
 
